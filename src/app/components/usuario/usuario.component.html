@@ -1,0 +1,145 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h2>Usuarios</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-lg-12">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h2>Agregar Usuarios</h2>
+
+                    <form [formGroup]="form" (ngSubmit)="agregarUsuario()">
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text">
+                                <i class="fas fa-envelope-open-text" [class.green-icon]="this.form.get('correo')?.valid"
+                                    [class.red-icon]="this.form.get('correo')?.invalid && this.form.get('correo')?.touched"></i>
+                            </span>
+                            <input formControlName="correo" type="email" class="form-control" placeholder="Correo">
+                        </div>
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text">
+                                <i class="fas fa-user" [class.green-icon]="this.form.get('usuario')?.valid"
+                                    [class.red-icon]="this.form.get('usuario')?.invalid && this.form.get('usuario')?.touched"></i>
+                            </span>
+                            <input formControlName="usuario" type="text" class="form-control" placeholder="Usuario">
+                        </div>
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text">
+                                <i class="fas fa-key" [class.green-icon]="this.form.get('password')?.valid"
+                                    [class.red-icon]="this.form.get('password')?.invalid && this.form.get('password')?.touched"></i>
+                            </span>
+                            <input formControlName="password" type="password" class="form-control"
+                                placeholder="Contraseña">
+                        </div>
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text">
+                                <i class="fas fa-genderless" [class.green-icon]="this.form.get('estatus')?.valid"
+                                    [class.red-icon]="this.form.get('estatus')?.invalid && this.form.get('estatus')?.touched"></i>
+                            </span>
+                            <input formControlName="estatus" type="text" class="form-control" placeholder="Estatus">
+                        </div>
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text">
+                                <i class="fas fa-restroom" [class.green-icon]="this.form.get('sexo')?.valid"
+                                    [class.red-icon]="this.form.get('sexo')?.invalid && this.form.get('sexo')?.touched"></i>
+                            </span>
+                            <input formControlName="sexo" type="text" class="form-control" placeholder="Sexo">
+                        </div>
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text">
+                                <i class="fas fa-calendar-week" [class.green-icon]="this.form.get('fecha')?.valid"
+                                    [class.red-icon]="this.form.get('fecha')?.invalid && this.form.get('fecha')?.touched"></i>
+                            </span>
+                            <input formControlName="fecha" type="text" class="form-control" placeholder="Fecha">
+                        </div>
+                        <div class="d-grid gap-2">
+                            <!-- [disabled]="this.form.invalid" -->
+                            <button [disabled]="this.form.invalid" type="submit" class="btn btn-primary">Registrar
+                                usuario</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h2>Listado de Usuarios</h2>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Id
+                                </td>
+                                <td>
+                                    Correo
+                                </td>
+                                <td>
+                                    usuario
+                                </td>
+                                <td>
+                                    password
+                                </td>
+                                <td>
+                                    estatus
+                                </td>
+                                <td>
+                                    sexo
+                                </td>
+                                <td>
+                                    fecha
+                                </td>
+                                <td>
+                                    Editar
+                                </td>
+                                <td>
+                                    Eliminar
+                                </td>
+                            </tr>
+                            <tr *ngFor="let usuario of listUsuario; let i = index">
+                                <td>
+                                    {{usuario.id}}
+                                </td>
+                                <td>
+                                    {{usuario.correo}}
+                                </td>
+                                <td>
+                                    {{usuario.usuario}}
+                                </td>
+                                <td>
+                                    {{usuario.password}}
+                                </td>
+                                <td>
+                                    {{usuario.estatus}}
+                                </td>
+                                <td>
+                                    {{usuario.sexo}}
+                                </td>
+                                <td>
+                                    {{usuario.fecha}}
+                                </td>
+                                <td>
+
+                                    <i class="fas fa-edit text-info"></i>
+                                </td>
+                                <td>
+                                    <!-- (click)="eliminarUsuario(i)" -->
+                                    <i (click)="eliminarUsuario(i)" class="fas fa-trash-alt text-danger"></i>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
